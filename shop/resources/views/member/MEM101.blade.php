@@ -21,19 +21,19 @@
           <tr>
             <th>氏名</th>
             <td>
-            <html:text property="name" />
+            <input type="text" name="name">
             </td>
           </tr>
           <tr>
             <th>パスワード</th>
             <td>
-            <html:password property="password" />
+            <input type="password" name="password">
             </td>
           </tr>
           <tr>
             <th>パスワード(確認用)</th>
             <td>
-            <html:password property="password2" />
+            <input type="password" name="password2">
             </td>
           </tr>
           <tr>
@@ -54,7 +54,7 @@
           <tr>
             <th>郵便番号</th>
             <td>
-            <html:text property="zip" />
+            <input type="text" name="zip">
             </td>
           </tr>
           <tr>
@@ -66,7 +66,7 @@
           <tr>
             <th>電話番号</th>
             <td>
-            <html:text property="tel" />
+            <input type="text" name="tel">
             </td>
           </tr>
         </table>

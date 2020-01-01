@@ -3,9 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	
-    <title>オンラインショップ</title>
+	<title>オンラインショップ</title>
+	<!--
     <link href="/ymMVC/css/design.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/ymMVC/js/action.js"></script>
+	<script type="text/javascript" src="/ymMVC/js/action.js"></script>
+    -->
 
 	<style>
 	</style>

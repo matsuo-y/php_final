@@ -26,25 +26,25 @@
           <tr>
             <th>商品名</th>
             <td>
-              <html:text property="goodsName" value="" />
+              <input type="text" name="goodsName" value="" >
             </td>
           </tr>
           <tr>
             <th>販売元</th>
             <td>
-              <html:text property="maker" value="" />
+              <input type="text" name="maker" value="" >
             </td>
           </tr>
           <tr>
             <th>金額上限</th>
             <td>
-              <html:text property="priceMax" value="" />
+              <input type="text" name="priceMax" value="" >
             </td>
           </tr>
           <tr>
             <th>金額下限</th>
             <td>
-              <html:text property="priceMin" value="" />
+              <input type="text" name="priceMin" value="" >
             </td>
           </tr>
         </table>
