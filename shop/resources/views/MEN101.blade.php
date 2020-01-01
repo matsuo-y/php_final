@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>ユーザメニュー</title>
-    <link href="/ymMVC/css/design.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/ymMVC/js/action.js"></script>
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('content')
     <div class="top-div">
       <div id="title-link " align="left">オンラインショッピングサイト</div>
       <div align="right">
@@ -39,5 +33,4 @@
 	%>
       </div>
     </div>
-  </body>
-</html>
+@endsection

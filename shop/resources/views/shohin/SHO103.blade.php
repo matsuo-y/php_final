@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>商品登録結果</title>
-    <link href="/ymMVC/css/design.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('content')
     <div align="left" class="caption">以下の商品をお買いものかごに登録しました。 
       <br>
       <br>●商品一覧
@@ -34,5 +29,4 @@
         <button type=button onclick="cartChoice">戻る</button>
       </form>
     </div>
-  </body>
-</html>
+@endsection

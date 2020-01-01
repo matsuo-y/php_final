@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>会員情報確認</title>
-    <link href="/ymMVC/css/design.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('content')
     <div class="top-div">
       <div id="title-link " align="left">オンラインショッピングサイト</div>
       <div align="right">
@@ -52,5 +47,4 @@
         <button type=button onclick="registChoice">戻る</button>
       </form>
     </div>
-  </body>
-</html>
+@endsection

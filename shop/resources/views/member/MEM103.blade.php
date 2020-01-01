@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>会員番号発行</title>
-    <link href="/ymMVC/css/design.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/ymMVC/js/action.js"></script>
-  </head>
-  <body>
+@extends('layouts.app')
+
+@section('content')
     <div class="top-div">
       <div id="title-link " align="left">オンラインショッピングサイト</div>
       <div align="right">
@@ -23,5 +17,4 @@
       <button type=button onclick="registChoice">戻る</button>
       <a href="{{ url('/menu') }}">メニューへ</a>
     </div>
-  </body>
-</html>
+@endsection
