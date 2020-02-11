@@ -33,11 +33,12 @@ class OnlineMemberController extends Controller
         $validator = Validator::make($onlineMember,[
             'name' => 'required|max:20',
             'password' => 'required|max:8',
+            'password2' => 'required|max:8|same:password',
             'age' => 'required|min:0',
             'sex' => 'required',
-            'zip' => 'required|max:8',
+            'zip' => ['required','max:8','regex:/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/'],
             'address' => 'required|max:50',
-            'tel' => 'required|max:20'
+            'tel' => ['required','max:20','regex:/^[0-9-]+$/']
         ]);
         if ($validator->fails()) {
             return redirect('/regist')
