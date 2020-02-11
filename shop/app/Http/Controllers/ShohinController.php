@@ -52,7 +52,7 @@ class ShohinController extends Controller
         }
         $resultOnlineProducts = $onlineProducts
           ->where('DELETE_FLG', 0)
-          ->paginate(5);
+          ->paginate(10);
         $isListEmpty = $onlineProducts->count() === 0;
     
         return view('shohin.SHO101', [
