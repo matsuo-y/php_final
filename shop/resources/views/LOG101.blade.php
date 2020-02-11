@@ -4,7 +4,7 @@
     <div class="top-div">
       <div id="title-link " align="left">オンラインショッピングサイト</div>
       <div align="right">
-        <span class="date">2019/12/30</span>
+        <span class="date"><?php echo(date('Y/m/d')); ?></span>
         <br>
         <span class="pnk">「XXXX」さん</span>
       </div>
