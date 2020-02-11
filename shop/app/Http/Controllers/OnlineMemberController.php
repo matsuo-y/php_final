@@ -36,7 +36,7 @@ class OnlineMemberController extends Controller
             'password2' => 'required|max:8|same:password',
             'age' => 'required|min:0',
             'sex' => 'required',
-            'zip' => ['required','max:8','regex:/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/'],
+            'zip' => ['required','max:8','regex:/^(([0-9]{3}-[0-9]{4})'],
             'address' => 'required|max:50',
             'tel' => ['required','max:20','regex:/^[0-9-]+$/']
         ]);
