@@ -18,12 +18,10 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('onlineMember', 'OnlineCategoryController');
 Route::resource('onlineMember', 'OnlineMemberController');
 Route::resource('onlineProduct', 'OnlineOrderController');
 Route::resource('onlineProduct', 'OnlineOrderListController');
-Route::resource('onlineProduct', 'OnlineProductController');
-Route::resource('onlineProduct', 'OnlineStaffController');
+Route::resource('shohin', 'ShohinController');
 
 Route::get('/', function () {
     //return view('welcome');
@@ -39,14 +37,9 @@ Route::get ('/regist', 'OnlineMemberController@input');
 Route::post('/regist/confirm', 'OnlineMemberController@confirm');
 Route::post('/regist/exec', 'OnlineMemberController@execRegist');
 
-Route::get('/search', function () {
-    $onlineProducts = OnlineProduct::all();
-    return view('shohin.SHO101', ['onlineProducts' => $onlineProducts]);
-});
+Route::get('/search', 'ShohinController@search');
 
-Route::get('/detail/{onlineProduct}', function (OnlineProduct $onlineProduct) {
-    return view('shohin.SHO102', ['onlineProduct' => $onlineProduct]);
-});
+Route::get('/detail/{id}', 'ShohinController@detail');
 
 Route::get('/add_cart', function () {
     return view('shohin.SHO103');
