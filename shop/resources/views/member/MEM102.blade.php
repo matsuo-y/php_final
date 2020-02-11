@@ -6,7 +6,7 @@
       <div align="right">
         <span class="date"><?php echo(date('Y/m/d')); ?></span>
         <br>
-        <span class="pnk">「XXXX」さん</span>
+        <span class="pnk">「ゲスト」さん</span>
       </div>
     </div>
     <div align="left" class="caption">この内容で登録しますか？
@@ -14,37 +14,38 @@
       <br>●会員情報
       <br>
       <br>
-      <form action="/registac">
+      <form action="{{action('OnlineMemberController@execRegist')}}" method="post">
+        {{ csrf_field() }}
         <table class="table-tate">
           <tr>
             <th>氏名</th>
-            <td>神田 KS</td>
+            <td>{{$onlineMember['name']}}</td>
           </tr>
           <tr>
             <th>年齢</th>
-            <td>35</td>
+            <td>{{$onlineMember['age']}}</td>
           </tr>
           <tr>
             <th>性別</th>
-            <td>男性</td>
+            <td>{{$onlineMember['sex']  === 'M' ? '男性' : $onlineMember['sex']  === 'F' ? '女性' : '-'}}</td>
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td>101-0021</td>
+            <td>{{$onlineMember['zip']}}</td>
           </tr>
           <tr>
             <th>住所</th>
-            <td>東京都千代田区</td>
+            <td>{{$onlineMember['address']}}</td>
           </tr>
           <tr>
             <th>電話番号</th>
-            <td>03-1111-1111</td>
+            <td>{{$onlineMember['tel']}}</td>
           </tr>
         </table>
         <br>
         <br>
-        <button type=button onclick="registChoice">登録</button>
-        <button type=button onclick="registChoice">戻る</button>
+        <button type="submit">登録</button>
+        <button type="button" onclick="history.back()">戻る</button>
       </form>
     </div>
 @endsection

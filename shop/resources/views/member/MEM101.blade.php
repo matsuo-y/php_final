@@ -6,22 +6,24 @@
       <div align="right">
         <span class="date"><?php echo(date('Y/m/d')); ?></span>
         <br>
-        <span class="pnk">「XXXX」さん</span>
+        <span class="pnk">「ゲスト」さん</span>
       </div>
     </div>
     <div align="left" class="caption">会員情報を入力してください。 
       <br>
       <br>
-      <span>エラーをここに表示</span>
+			<!-- Display Validation Errors -->
+			@include('common.errors')
       <br>●会員情報 
       <br>
       <br>
-      <form action="/preRegistac">
+      <form action="{{action('OnlineMemberController@confirm')}}" method="post">
+        {{ csrf_field() }}
         <table class="table-tate">
           <tr>
             <th>氏名</th>
             <td>
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{old('name')}}">
             </td>
           </tr>
           <tr>
@@ -39,42 +41,42 @@
           <tr>
             <th>年齢</th>
             <td>
-            <input type="number" name="age">
+            <input type="number" name="age" min="0" value="{{old('age')}}">
             </td>
           </tr>
           <tr>
             <th>性別(選択してください)</th>
             <td>
-            <html:select property="sex" value="">
-              <html:option value=""></html:option>
-              <html:option value="男">男</html:option>
-              <html:option value="女">女</html:option>
-            </html:select>
+            <select name="sex" value="{{old('sex')}}">
+              <option value=""></option>
+              <option value="M">男性</option>
+              <option value="F">女性</option>
+            </select>
           </tr>
           <tr>
             <th>郵便番号</th>
             <td>
-            <input type="text" name="zip">
+            <input type="text" name="zip" value="{{old('zip')}}">
             </td>
           </tr>
           <tr>
             <th>住所</th>
             <td>
-            <html:textarea property="address" cols="23" rows="5" />
+            <input type="textarea" name="address" cols="23" rows="5" value="{{old('address')}}"/>
             </td>
           </tr>
           <tr>
             <th>電話番号</th>
             <td>
-            <input type="text" name="tel">
+            <input type="tel" name="tel" value="{{old('tel')}}">
             </td>
           </tr>
         </table>
         <br>
         <br>
-        <button type=button onclick="preRegistChoice">確認</button>
-        <button type=button onclick="preRegistChoice">戻る</button>
-        <button type=button onclick="reset">クリア</button>
+        <button type="submit" name="confirm">確認</button>
+        <button type="button" onClick="location.href='{{ url('/') }}'">戻る</button>
+        <button type="reset">クリア</button>
       </form>
     </div>
 @endsection
