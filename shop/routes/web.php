@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::resource('onlineMember', 'OnlineMemberController');
-Route::resource('onlineProduct', 'OnlineOrderController');
+Route::resource('cart', 'CartController');
 Route::resource('onlineProduct', 'OnlineOrderListController');
 Route::resource('shohin', 'ShohinController');
 
@@ -38,16 +38,14 @@ Route::post('/regist/confirm', 'OnlineMemberController@confirm');
 Route::post('/regist/exec', 'OnlineMemberController@execRegist');
 
 Route::get('/search', 'ShohinController@search');
-
 Route::get('/detail/{id}', 'ShohinController@detail');
+Route::post('/detail/addCart', 'ShohinController@addCartSingle');
 
 Route::get('/add_cart', function () {
     return view('shohin.SHO103');
 });
 
-Route::get('/cart', function () {
-    return view('kago.KGO101');
-});
+Route::get('/cart', 'CartController@index');
 
 Route::get('/cart_confirm', function () {
     return view('kago.KGO102');

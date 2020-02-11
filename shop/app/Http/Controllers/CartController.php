@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\OnlineProduct;
+use App\OnlineOrder;
+use App\OnlineOrderList;
 
-class OnlineOrderController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,28 @@ class OnlineOrderController extends Controller
      */
     public function index()
     {
-        //
+        // いったん仮置き
+        $userId = 1;
+        //セッションから取得
+        $session = Session::get('cartItem' .$userId);
+        $onlineProducts = OnlineProduct::all();
+        $result = array();
+        foreach($session as $target) {
+            $onlineProduct = $onlineProducts->where('PRODUCT_CODE', $target->PRODUCT_CODE)->first();
+            $app = app();
+            $item = $app->make('stdClass');
+            $item->PRODUCT_CODE = $target->PRODUCT_CODE;
+            $item->buyCnt = $target->buyCnt;
+            $item->PRODUCT_NAME = $onlineProduct['PRODUCT_NAME'];
+            $item->MAKER = $onlineProduct['MAKER'];
+            $item->UNIT_PRICE = $onlineProduct['UNIT_PRICE'];
+            array_push($result, $item);
+        }
+        $isListEmpty = count($result) === 0;
+        return view('kago.KGO101', [
+            'cartItems' => $result,
+            'isListEmpty' => $isListEmpty
+            ]);
     }
 
     /**

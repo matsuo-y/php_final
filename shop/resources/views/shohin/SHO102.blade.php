@@ -10,25 +10,21 @@
       </div>
     </div>
     <div align="center" class="caption">
-      <form action="/goodsDetailChoice">◆商品詳細【商品名】 
-        <br>
-        <br>
-        <br>画像： 
-        <html:img src="${sessionScope.goodsDetail.picture }" />
-        <br>
-        <br>商品説明： 商品ですよ 
-        <br>
-        <br>価格：\2,222
-        <br>
-        <br>
-        <span>エラーをここに表示</span>
+      <form action="{{action('ShohinController@addCartSingle')}}" method="post">
+        {{ csrf_field() }}
+        <br>◆商品詳細【 {{ $onlineProduct->PRODUCT_NAME }} 】 
+        <br><img alt="{{ $onlineProduct->PRODUCT_NAME }}" src="{{ asset('/images/goods/' .$onlineProduct->PICTURE_NAME) }}">
+        <br>商品説明： {{ $onlineProduct->MEMO }}
+        <br>価格：\{{ number_format($onlineProduct->UNIT_PRICE) }}
+		  	<!-- Display Validation Errors -->
+		  	@include('common.errors')
         <br>
         <br>購入数
-		<input type="number" name="buyCnt" min="1" max="999">個
+        <input type="number" name="buyCnt" min="1" max="999" value="{{old('buyCnt')}}">個
         <br>
-        <br>
-        <button type=button onclick="goodsDetailChoice">お買い物かごにいれる</button>
-        <button type=button onclick="goodsDetailChoice">戻る</button>
+        <input type="hidden" name="id" value="{{ $id }}">
+        <button type="submit">お買い物かごにいれる</button>
+        <button type="button" onClick="location.href='{{ url('/search') }}'">戻る</button>
       </form>
     </div>
 @endsection

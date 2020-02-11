@@ -6,12 +6,12 @@
       <div align="right">
         <span class="date"><?php echo(date('Y/m/d')); ?></span>
         <br>
-        <span class="pnk">「XXXX」さん</span>
+        <span class="pnk">「ゲスト」さん</span>
       </div>
     </div>
     <div align="center" class="caption">注文が完了しました。 
       <br>
       <br>
-      <a href="{{ url('/menu') }}">戻る</a>
+      <button type="button" onClick="location.href='{{ url('/') }}'">メニューへ戻る</button>
     </div>
 @endsection

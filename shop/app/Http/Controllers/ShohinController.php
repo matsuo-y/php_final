@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Validator;
 use App\OnlineCategory;
 use App\OnlineProduct;
@@ -87,6 +88,61 @@ class ShohinController extends Controller
                 'message' => '存在しない商品コードが指定されました。'
                 ]);
         }
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addCartSingle(Request $request)
+    {
+        // いったん仮置き
+        $userId = 1;
+        $addItem = $request->all();
+        // 入力チェック
+        $validator = Validator::make($addItem,[
+            'buyCnt' => 'required|min:0|max:999',
+        ]);
+        if ($validator->fails()) {
+            return redirect('detail/' .$addItem['id'])
+            ->withInput()
+            ->with()
+            ->withErrors($validator);
+        }
+        // 最新の商品情報取得
+        $onlineProduct = OnlineProduct::where('PRODUCT_CODE', $addItem['id'])->first();
+
+        if ($onlineProduct == null) {
+            // 商品情報が取得できなかった場合がエラー画面に飛ばす
+            return view('common.ERR101', [
+                'message' => '存在しない商品コードが指定されました。'
+                ]);
+        }
+        //セッションから取得
+        $session = Session::get('cartItem' .$userId);
+
+        $buyCnt = $request->input('buyCnt');
+        /*
+        if ($session != null) {
+            dd($session);
+            $buyCnt = $buyCnt + $session->buyCnt;
+        }*/
+        if ($buyCnt > $onlineProduct->STOCK_COUNT) {
+            return redirect('detail/' .$addItem['id'])
+            ->withInput()
+            ->with(['message' => '在庫を上回っています']);
+        }
+        $app = app();
+        $item = $app->make('stdClass');
+        $item->PRODUCT_CODE = $addItem['id'];
+        $item->buyCnt = $buyCnt;
+        Session::put('cartItem' .$userId, [$item]);
+
+        //ビューの表示
+        return redirect('/cart');
 
     }
 }

@@ -6,7 +6,6 @@
       <br>●商品一覧
       <br>
       <br>
-      <form action="/goodsSearchCompChoice">
         <table>
           <tr>
             <th>商品コード</th>
@@ -25,8 +24,7 @@
         </table>
         <br>
         <br>
-        <button type=button onclick="cartChoice">お買い物かご</button>
-        <button type=button onclick="cartChoice">戻る</button>
-      </form>
+        <button type="button" onClick="location.href='{{ url('/cart') }}'">お買い物かご</button>
+        <button type="button" onClick="location.href='{{ url('/search') }}'">戻る</button>
     </div>
 @endsection
