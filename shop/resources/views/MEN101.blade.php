@@ -10,18 +10,14 @@
       <br>
       <br>
       <div align="center" class=".caption">
-        <%
-		String userName = (String) session.getAttribute("userName");
-		if (!("ゲスト").equals(userName)) {
-	%>
-        <br>
-        <form action="/logout">
-          <button type=submit>ログアウト</button>
-        </form>
-        <br>
-        <%
-		}
-	%>
+        @guest
+          <button type="button" onClick="location.href='{{ url('/login') }}'">ログイン</button>
+        @else
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+          @csrf
+            <button type="submit">ログアウト</button>
+          </form>
+        @endguest
       </div>
     </div>
 @endsection

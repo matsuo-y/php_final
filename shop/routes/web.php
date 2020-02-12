@@ -1,12 +1,13 @@
 <?php
 
 use App\OnlineCategory;
-use App\OnlineMember;
+use App\User;
 use App\OnlineOrder;
 use App\OnlineOrderList;
 use App\OnlineProduct;
 // use App\OnlineStaff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,6 @@ Route::resource('shohin', 'ShohinController');
 Route::get('/', function () {
     //return view('welcome');
     return view('MEN101');
-});
-
-Route::get('/login', function () {
-    return view('member.LOG101');
 });
 
 // 新規会員登録系
@@ -89,6 +86,9 @@ Route::post('/exec_cart', function (Request $resuest) {
 Route::get('/cart_complete', function () {
     return view('kago.KGO103');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', function () {
+    return view('auth.LOG101');
+})->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

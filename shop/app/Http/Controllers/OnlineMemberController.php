@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Validator;
 use Carbon\Carbon;
-use App\OnlineMember;
+use App\User;
 
 class OnlineMemberController extends Controller
 {
@@ -66,8 +66,8 @@ class OnlineMemberController extends Controller
         $session = Session::get('onlineMember');
        
         // 登録するデータを設定
-        $nextId = OnlineMember::max('MEMBER_NO') + 1;
-        $onlineMember = new OnlineMember;
+        $nextId = User::max('MEMBER_NO') + 1;
+        $onlineMember = new User;
         $onlineMember->MEMBER_NO = $nextId;
         $onlineMember->NAME = $session['name'];
         $onlineMember->PASSWORD = $session['password'];

@@ -11,14 +11,30 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * テーブル名
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $table = 'online_member';
 
+    /**
+     * ID
+     */
+    protected $primaryKey = 'MEMBER_NO';
+    
+    /**
+     * 作成日
+     */
+    const CREATED_AT = 'REGISTER_DATE';
+    
+    /**
+     * 更新日
+     */
+    const UPDATED_AT = 'LAST_UPD_DATE';
+
+    /**
+     * 更新不可項目
+     */
+    protected $guarded = ['MEMBER_NO', 'REGISTER_DATE'];
+    
     /**
      * The attributes that should be hidden for arrays.
      *
