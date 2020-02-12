@@ -17,6 +17,8 @@
       <br>
       @if ($isListEmpty)
       <apan>検索結果がありませんでした。</span>
+      <br>
+      <button type="button" onClick="location.href='{{ url('/') }}'">メニューへ</button>
       @else
       <form action="/orderChoice">
         <table>

@@ -23,16 +23,18 @@ class CartController extends Controller
         $session = Session::get('cartItem' .$userId);
         $onlineProducts = OnlineProduct::all();
         $result = array();
-        foreach($session as $target) {
-            $onlineProduct = $onlineProducts->where('PRODUCT_CODE', $target->PRODUCT_CODE)->first();
-            $app = app();
-            $item = $app->make('stdClass');
-            $item->PRODUCT_CODE = $target->PRODUCT_CODE;
-            $item->buyCnt = $target->buyCnt;
-            $item->PRODUCT_NAME = $onlineProduct['PRODUCT_NAME'];
-            $item->MAKER = $onlineProduct['MAKER'];
-            $item->UNIT_PRICE = $onlineProduct['UNIT_PRICE'];
-            array_push($result, $item);
+        if ($session != null){
+            foreach($session as $target) {
+                $onlineProduct = $onlineProducts->where('PRODUCT_CODE', $target->PRODUCT_CODE)->first();
+                $app = app();
+                $item = $app->make('stdClass');
+                $item->PRODUCT_CODE = $target->PRODUCT_CODE;
+                $item->buyCnt = $target->buyCnt;
+                $item->PRODUCT_NAME = $onlineProduct['PRODUCT_NAME'];
+                $item->MAKER = $onlineProduct['MAKER'];
+                $item->UNIT_PRICE = $onlineProduct['UNIT_PRICE'];
+                array_push($result, $item);
+            }
         }
         $isListEmpty = count($result) === 0;
         return view('kago.KGO101', [
