@@ -89,3 +89,6 @@ Route::post('/exec_cart', function (Request $resuest) {
 Route::get('/cart_complete', function () {
     return view('kago.KGO103');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
