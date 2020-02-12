@@ -1,15 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="top-div">
-      <div id="title-link " align="left">オンラインショッピングサイト</div>
-      <div align="right">
-        <span class="date"><?php echo(date('Y/m/d')); ?></span>
-        <br>
-        <span class="pnk">「XXXX」さん</span>
-      </div>
-    </div>
-    <br>
     <div align="center">
       <a href="{{ url('/regist') }}" align="middle">新規会員登録</a>　会員情報の新規登録を行います。　　　　
       <br>
